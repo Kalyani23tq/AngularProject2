@@ -1,0 +1,60 @@
+
+<form [formGroup]="userform" validate>
+
+   <label>Name</label>
+   <input type="text" formControlName="name"/><br>
+   <div *ngIf="userform.controls['name'].invalid && userform.controls['name'].touched">
+       <div *ngIf="userform.controls['name'].errors.required">Name is required</div>
+
+      <div *ngIf="userform.controls['name'].errors.minlength" >Name should be minimum 3 letters</div>
+
+   </div>
+
+   <label>Password</label>
+   <input type="text" formControlName="password"/><br>
+   <div *ngIf="userform.controls['password'].invalid && userform.controls['password'].touched">
+       <div *ngIf="userform.controls['password'].errors.required">Password is required</div>
+
+      <div *ngIf="userform.controls['password'].errors.minlength" >password should be minimum 8 letters</div>
+
+   </div>
+   <label>Email</label>
+   <input type="text" formControlName="email"/><br>
+   <div *ngIf="userform.controls['email'].invalid && userform.controls['email'].touched">
+       <div *ngIf="userform.controls['email'].errors.required">Email is required</div>
+
+      <div *ngIf="userform.controls['email'].errors.pattern" > provide valid Email address
+      </div>
+
+   </div>
+
+<label>please select your gender:</label>
+<input type="radio" value="female" name="gender" formControlName="gender">Female
+<input type="radio" value="male" name="gender" formControlName="gender">Male<br>
+<label>please select your Country:</label>
+  <select formControlName="country">
+      <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+  </select>
+
+
+  <div formGroupName="contactdetails">
+    
+    <label>LandLine</label> <input type="text" formControlName="land"/> <br>
+    
+    <div *ngIf="userform.controls['contactdetails'].controls['land'].invalid &&
+    userform.controls['contactdetails'].controls['land'].touched">
+    
+    <div *ngIf="userform.controls['contactdetails'].controls['land'].errors.required">Number is Required</div>
+    
+    </div>
+            
+    <label>Mobile</label> <input type="text" formControlName="mobile"/>  
+    </div>
+    
+         <input type="submit" value="Submit" (click)="show()" [disabled]="userform.invalid">
+    
+    </form>
+      
+    <br>
+    {{userform.value|json}}
+    <br>

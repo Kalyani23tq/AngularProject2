@@ -1,0 +1,56 @@
+
+<div class="container">
+
+    <form #frm="ngForm">
+      <div class="from-group">
+        <label>FullName</label>
+        <input type="text" class="form-control" #nm="ngModel" ngModel name="Name" required minlength="5" maxlength="15">
+
+         <div class="alert alert-danger" *ngIf="nm.invalid && nm.touched">
+             <div *ngIf="nm.errors.required">Full Name is required</div>
+             <div *ngIf="nm.errors.minlength">Name should be minimum of 5 letters</div>
+
+            </div>
+         </div>
+
+         <div class="from-group">
+            <label>Email</label>
+            <input type="email" class="form-control" #email="ngModel" ngModel name="Email" required pattern="[a-zA-Z0-9]+@[a-z]+[.][a-z]+">
+    
+             <div class="alert alert-danger" *ngIf="email.invalid && email.touched">
+                 <div *ngIf="email.errors.required">Email is required</div>
+                 <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
+    
+                </div>
+             </div>
+
+             <div class="from-group">
+                <label>Password</label>
+                <input type="password" class="form-control" #pass="ngModel" ngModel name="Password" required minlength="8">
+        
+                 <div class="alert alert-danger" *ngIf="pass.invalid && pass.touched">
+                     <div *ngIf="pass.errors.required">Password is required</div>
+                     <div *ngIf="pass.errors.minlength">Password should be minimum of 8 letters</div>
+        
+                    </div>
+                 </div>
+
+         <div ngModelGroup="Contact_details">
+              <div class="from-group">
+                <label>Landline</label>
+                <input type="text" class="form-control" ngModel name="landline">
+                </div>
+                <div class="from-group">
+                    <label>Mobile</label>
+                    <input type="text" class="form-control" ngModel name="mobile">
+                </div>
+
+
+         </div>
+
+<input type="submit" class="btn btn-default" value="submit" [disabled]="frm.invalid">
+
+    </form>
+
+</div><br>
+{{frm.value|json}}

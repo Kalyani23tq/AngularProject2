@@ -1,0 +1,23 @@
+
+
+
+
+
+<table border="3">
+    <th>Code</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <tr *ngFor="let e of employee">
+      <td><a [routerLink]="['/empcode',e.code]">{{e.code}}</a></td>
+      <td>{{e.name}}</td>
+      <td>{{e.sal}}</td>
+
+    </tr>
+</table>
+<br><br><br>
+<button [routerLink]="['child']">ChildData</button>
+
+   <router-outlet></router-outlet>
+
+
+   <!-- <h1 style="background-color: aquamarine;"><b>This is Home Page</b></h1> -->

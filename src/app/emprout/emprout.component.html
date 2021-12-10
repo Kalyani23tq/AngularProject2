@@ -1,0 +1,14 @@
+
+
+<table border="3">
+    <th>Code</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <tr  *ngIf="emplist">
+
+        <td>{{emplist.code}}</td>
+    <td>{{emplist.name}}</td>
+        <td>{{emplist.sal}}</td>
+    </tr>
+</table>
+<button (click)="onBack()">Back</button>

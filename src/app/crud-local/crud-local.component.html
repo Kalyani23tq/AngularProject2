@@ -1,0 +1,98 @@
+
+<div class="container">
+   <form class="form-horizontal">
+
+    <div class="form-group">
+
+        <label class="control-label col-sm-2" for="Name">Name</label>
+        <div class="col-sm-5">
+          <input type="text" class="from-control" id="name" name="name" [(ngModel)]="model.name" placeholder="Enter Name">
+
+
+        </div>
+    </div>
+    <div class="form-group">
+
+        <label class="control-label col-sm-2" for="Position">Position</label>
+        <div class="col-sm-5">
+          <input type="text" class="from-control" id="position" name="position" [(ngModel)]="model.position" placeholder="Enter Position">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" (click)="addEmployee()">Save</button>
+        </div>
+    </div>
+
+    <h2>Display Data</h2>
+    <table class="table table-bordered">
+      <thead>
+          <tr>
+              <th width="400">Name</th>
+              <th item-width="400">Position</th>
+              <th item-width="200">Action</th>
+          </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let emp of employee; let i=index">
+            <tr *ngIf="emp">
+                <td>{{emp.name}}</td>
+                <td>{{emp.position}}</td>
+            <td>
+                <a class="btn btn-success" (click)="edit(i)">Edit</a>
+                <a class="btn btn-danger"   (click)="delete(i)">Delete</a>
+            </td>
+            </tr>
+
+
+        </ng-container>
+      </tbody>
+    </table>
+
+    <h2>Update Data</h2>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name</label>
+            <div class="col-sm-10">
+
+
+                <input type="text" class="from-control" id="name" name="name" [(ngModel)]="model2.name" placeholder="Enter name">
+            </div>
+
+        </div>
+      
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="position">Position</label>
+            <div class="col-sm-10">
+
+
+                <input type="text" class="from-control" id="position" name="position" [(ngModel)]="model2.position" placeholder="Enter Position">
+            </div>
+
+        </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" (click)="updateEmployee()">Update</button>
+        </div>
+    
+
+      </div>
+
+
+
+
+
+    </form>
+
+
+
+
+   </form>
+
+
+
+
+
+</div>
